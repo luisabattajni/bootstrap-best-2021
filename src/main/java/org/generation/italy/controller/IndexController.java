@@ -10,15 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class IndexController {
+	
+	private static final String AUTHOR= "author";
+	private static final String NAME="RottenTomatoes";
 
 	@GetMapping
 	public String index(Model model) {
-		model.addAttribute("author", "RottenTomatoes");
+		model.addAttribute(AUTHOR, NAME);
 		return "index";
 	}
 	
 	@GetMapping("/movies")
 	public String movies(Model model) {
+		model.addAttribute(AUTHOR, NAME);
 		model.addAttribute("title", "Movies");
 		model.addAttribute("list", Arrays.asList("My Salinger Year", "Palmer", "Blu Bayou", "Cruella", "Percy VS Goliath"));
 		return "list";
@@ -26,6 +30,7 @@ public class IndexController {
 	
 	@GetMapping("/songs")
 	public String songs(Model model) {
+		model.addAttribute(AUTHOR, NAME);
 		model.addAttribute("title", "Songs");
 		model.addAttribute("list", Arrays.asList("2010 — Earl Sweatshirt", "Keep An Eye on Dan — ABBA","Like I Used To — Sharon Van Etten & Angel Olsen"));
 		return "list";
